@@ -1,0 +1,9 @@
+{application, simple,
+ [
+  {description, "Simple Example of delegate in use"},
+  {vsn, "1"},
+  {applications, [
+                  kernel,
+                  stdlib
+                 ]}
+ ]}.
