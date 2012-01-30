@@ -21,12 +21,14 @@
 %% -----------------------------------------------------------------------------
 -module(simple_log).
 -export([log/3]).
+-compile({no_auto_import, [error/2]}).
 -include_lib("annotations/include/annotations.hrl").
 
--delegate([{prefix, function},
-           {delegate, [error, warn, info, debug]}]).
+-delegate([{delegate, ["info", "warn", "error"]},
+           {args, ['$T', '$I']},
+           {arity, 2}]).
 log(Level, Message, Args) ->
-    case get({?MODULE, loglevel}) of
+    case erlang:get({?MODULE, loglevel}) of
         Level ->
             io:format(Message, Args);
         _ ->
