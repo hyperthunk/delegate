@@ -14,10 +14,10 @@ info(Msg, Args) ->
     log(info, Msg, Args).
 
 warn(Msg, Args) ->
-    warn(info, Msg, Args).
+    log(warn, Msg, Args).
 
 error(Msg, Args) ->
-    error(info, Msg, Args).
+    log(error, Msg, Args).
 
 log(Level, Message, Args) ->
     case erlang:get({simple_log, loglevel}) of
